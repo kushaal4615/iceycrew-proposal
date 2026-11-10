@@ -25,6 +25,7 @@ import mayaImg from '../assets/img/maya.jpg'
 import storeImg from '../assets/img/store.jpg'
 import hoodieImg from '../assets/img/hoodie.jpg'
 import swatchesImg from '../assets/img/swatches.jpg'
+import logoImg from '../assets/img/iceycrew-logo.png'
 
 /* ------------------------------------------------------------------ commercial knob */
 
@@ -74,6 +75,9 @@ export const IMG = {
   hoodie: { src: hoodieImg, alt: 'A woman in a grey hoodie under a denim jacket against a blue wall', w: 733, h: 1100, credit: UN },
   swatches: { src: swatchesImg, alt: 'Oil and water bubbles in gold, pink and blue', w: 1400, h: 933, credit: UN },
 } satisfies Record<string, Img>
+
+/** The store's own logo file, as served on iceycrew.com (gold IC + diamond, transparent). */
+export const LOGO = { src: logoImg, w: 268, h: 216 } as const
 
 /* ------------------------------------------------------------------ types */
 

@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { createContext, useCallback, useContext, useId, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { Check, Copy, Plus } from 'lucide-react'
 import { LineMask } from './motion'
-import type { Img } from '../../data/proposal'
+import { LOGO, type Img } from '../../data/proposal'
 import { formatMoney, cn } from '../../lib/format'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 
@@ -200,16 +200,10 @@ export const Time = Code
 
 /* ------------------------------------------------------------------ the mark, the facet and the grade strip */
 
-/** The IceyCrew "IC" diamond, as the page draws it: a gold stone with its facets in ink. */
+/** The IceyCrew logo as the store uses it: the gold "IC" with the diamond, taken from iceycrew.com. `size` is the height. */
 export function IceMark({ size = 24, className = '', tone = 'gold' }: { size?: number; className?: string; tone?: 'gold' | 'ink' | 'light' }) {
-  const fill = tone === 'gold' ? 'var(--frame)' : tone === 'light' ? 'var(--stock-50)' : 'var(--ink)'
-  const line = tone === 'light' ? 'var(--jet-900)' : tone === 'ink' ? 'var(--ground)' : 'var(--jet-900)'
-  return (
-    <svg width={size} height={size} viewBox="0 0 64 64" className={className} aria-hidden>
-      <path d="M32 8 56 28 32 58 8 28Z" fill={fill} />
-      <path d="M8 28h48M32 8 22 28l10 30M32 8l10 20-10 30M18 8h28l10 20H8Z" stroke={line} strokeWidth="2" fill="none" strokeLinejoin="round" />
-    </svg>
-  )
+  void tone
+  return <img src={LOGO.src} alt="" width={Math.round(size * (LOGO.w / LOGO.h))} height={size} className={cn('inline-block shrink-0 select-none', className)} style={{ height: size, width: 'auto', color: 'transparent' }} draggable={false} aria-hidden />
 }
 
 /** The report's small ornament between fields: the stone's facet lines, drawn as one stroke. */

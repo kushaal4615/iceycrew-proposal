@@ -46,7 +46,7 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import { useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
-import { IMG, SCREEN_INK, SEASON, WEB_SCREENS, type Screen } from '../../data/proposal'
+import { IMG, LOGO, SCREEN_INK, SEASON, WEB_SCREENS, type Screen } from '../../data/proposal'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { cn } from '../../lib/format'
 import { SETTLE } from './motion'
@@ -804,10 +804,7 @@ function WebScreen({ screen }: { screen: Screen }) {
     <div className="absolute inset-0 flex" style={{ background: S.bg }}>
       <div className="flex shrink-0 flex-col" style={{ width: 200, background: S.ink, color: S.onNight, padding: '16px 10px' }}>
         <span className="flex items-center" style={{ gap: 8, padding: '0 8px 14px' }}>
-          <svg width="22" height="22" viewBox="0 0 64 64">
-            <path d="M32 8 56 28 32 58 8 28Z" fill={S.gold} />
-            <path d="M8 28h48M32 8 22 28l10 30M32 8l10 20-10 30" stroke={S.ink} strokeWidth="2" fill="none" />
-          </svg>
+          <img src={LOGO.src} alt="" draggable={false} style={{ height: 26, width: 'auto', color: 'transparent' }} />
           <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.16em' }}>
             ICEY<span style={{ color: S.goldLight }}>CREW</span>
           </span>
