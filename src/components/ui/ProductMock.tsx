@@ -17,7 +17,6 @@ import {
   ChartColumn,
   Check,
   ChevronLeft,
-  ChevronRight,
   Gauge,
   Hash,
   Heart,
