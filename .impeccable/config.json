@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "src/index.css"
+        ],
+        "createdAt": "2026-11-09T11:42:51.407Z",
+        "reason": "Claude: the .foil class is the programme world's brass foil stamp, used only on display numerals, money and the cover title, a metallic material not a decorative rainbow"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "src/components/sections/Hero.tsx"
+        ],
+        "createdAt": "2026-11-09T12:02:02.729Z",
+        "reason": "Claude: the direction contract's foil stamp on the three cover numerals; the gradient is brass foil on digit wheels, not decorative heading text"
+      }
+    ]
+  }
+}

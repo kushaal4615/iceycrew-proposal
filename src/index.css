@@ -1,0 +1,109 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/playfair-display';
+@import '@fontsource-variable/playfair-display/wght-italic.css';
+@import '@fontsource-variable/outfit';
+@import '@fontsource-variable/jetbrains-mono';
+@import './styles/tokens.css';
+
+@layer base {
+  html {
+    background: var(--ground);
+    color: var(--ink);
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 4.5rem;
+    color-scheme: light;
+  }
+  :root[data-theme='dark'] { color-scheme: dark; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: var(--wt-display);
+    letter-spacing: -0.02em;
+    line-height: 0.96;
+    margin: 0;
+    text-wrap: balance;
+  }
+  h1 em, h2 em, h3 em, .display em { font-style: italic; font-weight: 400; color: var(--money); }
+  p { margin: 0; text-wrap: pretty; }
+  ::selection { background: var(--selection); color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+  a { color: inherit; text-underline-offset: 0.2em; }
+  button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+  img { display: block; max-width: 100%; }
+  ::-webkit-scrollbar { height: 8px; width: 10px; }
+  ::-webkit-scrollbar-thumb { background: var(--rule-strong); border-radius: 999px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+}
+
+@layer components {
+  .shell { width: 100%; max-width: var(--shell-max); margin-inline: auto; padding-inline: var(--gutter); }
+  .section-y { padding-block: var(--section-y); }
+  .measure { max-width: 64ch; }
+  .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+  .display { font-family: var(--font-display); font-weight: var(--wt-display); letter-spacing: -0.02em; line-height: 0.96; }
+  .display-italic { font-family: var(--font-display); font-weight: 400; font-style: italic; letter-spacing: -0.01em; line-height: 0.98; }
+  /* the store's own lockup: Outfit, wide, uppercase */
+  .display-wide { font-family: var(--font-body); font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+  .kicker { font-family: var(--font-mono); font-size: var(--fs-micro); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* FOIL: the gold of the mark, as the report's numerals, money and cover title wear it. */
+  .foil {
+    background-image: linear-gradient(112deg, var(--foil-c) 0%, var(--foil-a) 38%, var(--foil-b) 58%, var(--foil-c) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0.5px 0 rgb(255 255 255 / 0.25);
+  }
+  /* the one card family: a plate of the report. Report stock with a gold micro-rule inset from the edge. */
+  .card {
+    position: relative;
+    background: var(--card);
+    border-radius: var(--r-card);
+    box-shadow: var(--card-border), var(--card-shadow);
+    background-image:
+      linear-gradient(var(--frame), var(--frame)),
+      linear-gradient(var(--frame), var(--frame)),
+      linear-gradient(var(--frame), var(--frame)),
+      linear-gradient(var(--frame), var(--frame));
+    background-repeat: no-repeat;
+    background-size: calc(100% - var(--frame-inset) * 2) 1px, calc(100% - var(--frame-inset) * 2) 1px, 1px calc(100% - var(--frame-inset) * 2), 1px calc(100% - var(--frame-inset) * 2);
+    background-position: var(--frame-inset) var(--frame-inset), var(--frame-inset) calc(100% - var(--frame-inset)), var(--frame-inset) var(--frame-inset), calc(100% - var(--frame-inset)) var(--frame-inset);
+  }
+  .card-lift { box-shadow: var(--card-border), var(--card-shadow-lift); }
+  /* a plate without the gold frame (for cells that carry a photo or a device) */
+  .card-plain { position: relative; background: var(--card); border-radius: var(--r-card); box-shadow: var(--card-border), var(--card-shadow); }
+
+  /* the report's rule: one gold hairline with a thin ink hairline under it */
+  .rule-foil { height: 4px; border-top: 1px solid var(--frame); border-bottom: 1px solid var(--rule-strong); }
+  /* field ruling: one line per field */
+  .ruled { background-image: linear-gradient(to bottom, var(--rule) 1px, transparent 1px); background-size: 100% 2rem; }
+  .ruled-row { background-image: linear-gradient(to bottom, var(--rule-row) 1px, transparent 1px); background-size: 100% 3rem; }
+  /* the plotting grid of a stone's diagram: fine squares */
+  .plot { background-image: linear-gradient(var(--rule) 1px, transparent 1px), linear-gradient(90deg, var(--rule) 1px, transparent 1px); background-size: 1rem 1rem; }
+  /* a leader of dots between a field and its value, as a report sets them */
+  .leader { background-image: radial-gradient(circle, var(--rule-strong) 1px, transparent 1.2px); background-size: 8px 2px; background-repeat: repeat-x; background-position: 0 100%; }
+
+  .grain { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  /* a laser inscription: mono, slightly spaced, the faint double strike of an engraving */
+  .struck { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; text-shadow: 0.5px 0.4px 0 currentColor; }
+  .duotone { filter: grayscale(1) contrast(1.06) brightness(1.02); color: transparent; }
+  .evidence img { color: transparent; }
+
+  /* the product's signature as the report prints it: four marks, Fit · Colour · Cohesion · Occasion */
+  .grade { display: inline-grid; grid-auto-flow: column; gap: 3px; }
+  .grade > span { display: block; height: 8px; width: 100%; border-radius: 2px; }
+  .grade .strong { background: var(--grade-strong); }
+  .grade .good { background: var(--grade-good); }
+  .grade .work { background: var(--grade-work); }
+  .grade .off { background: var(--grade-off); }
+}

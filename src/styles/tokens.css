@@ -1,0 +1,218 @@
+/* VARIABLES ONLY. primitive → semantic → component. Resets live in index.css @layer base.
+   World: the Grading Report. The certificate that comes with a stone: off-white report stock, a fine
+   gold micro-rule frame, fields set in small caps down the left with their values struck in mono, a
+   laser inscription number, a plotting grid of four marks, and a gold seal. The product grades an
+   outfit out of 100 on Fit · Colour · Cohesion · Occasion; the proposal grades the build the same way.
+   Palette: IceyCrew's own gold (the "IC" diamond mark, #E6B316) on the brief's off-white and near-black,
+   with the store's link blue as the inscription accent. Type: Playfair Display / Outfit / JetBrains Mono. */
+
+:root {
+  /* ---------- primitives ---------- */
+  --stock-0: #ffffff;
+  --stock-50: #fafaf8;
+  --stock-100: #f3f3ef;
+  --stock-200: #e9e9e3;
+  --stock-300: #d9d9d1;
+  --stock-400: #bdbdb4;
+  --stock-500: #8a8a8a;
+  --jet-950: #0a0a0a;
+  --jet-900: #111111;
+  --jet-850: #171716;
+  --jet-800: #1f1f1e;
+  --jet-700: #2b2b2a;
+  --jet-600: #3d3d3b;
+  --gold-100: #fbf1cc;
+  --gold-200: #f6e39a;
+  --gold-300: #f2cf55;
+  --gold-500: #e6b316;
+  --gold-600: #c99a0c;
+  --gold-700: #8a6a00;
+  --gold-800: #5c4600;
+  --ice-300: #aeb6ff;
+  --ice-500: #2332d5;
+  --ice-600: #1b27a8;
+  --ice-800: #141d7a;
+  --ruby-500: #c8333f;
+  --ruby-300: #f08a96;
+
+  /* the product's own palette (the clickable prototype's Gallery Gold look); never theme-inverted */
+  --scr-bg: #fafaf8;
+  --scr-surface: #ffffff;
+  --scr-raised: #f4f4f1;
+  --scr-high: #ececE8;
+  --scr-rule: rgb(17 17 17 / 0.1);
+  --scr-ink: #111111;
+  --scr-ink-2: #5e5e5a;
+  --scr-ink-3: #6e6e69;
+  --scr-night: #0a0a0a;
+  --scr-night-2: #1f1f1e;
+  --scr-on-night: #fafaf8;
+  --scr-on-night-2: #a8a8a3;
+  --scr-gold: #e6b316;
+  --scr-on-gold: #111111;
+  --scr-gold-text: #8a6a00;
+  --scr-gold-light: #f2cf55;
+  --scr-gold-soft: #fbf1cc;
+  --scr-strong: #e6b316;
+  --scr-good: #111111;
+  --scr-work: #c8333f;
+  --scr-success: #1b8a5a;
+  --scr-success-soft: #d9f2e5;
+  --scr-danger-soft: #fadcdf;
+
+  /* ---------- type ---------- */
+  --font-display: 'Playfair Display Variable', 'Playfair Display', 'Georgia', serif;
+  --font-body: 'Outfit Variable', 'Outfit', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+  /* 320 → 40px (12.5vw) · 768 → 76px · 1440 → 120px (8.3vw) */
+  --fs-hero: clamp(2.5rem, 0.5rem + 7vw, 6.4rem);
+  --fs-h2: clamp(2.4rem, 1.3rem + 3.4vw, 4.8rem);
+  --fs-h3: clamp(1.25rem, 1.1rem + 0.5vw, 1.6rem);
+  --fs-numeral: clamp(7rem, 2rem + 24vw, 26rem);
+  --fs-fact: clamp(2.8rem, 1.6rem + 3.4vw, 5rem);
+  --fs-body: 1.0625rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.75rem;
+  --wt-display: 500;
+
+  /* ---------- space ---------- */
+  --gutter: clamp(1rem, 0.4rem + 2.6vw, 3rem);
+  --shell-max: 88rem;
+  --section-y: clamp(6rem, 3rem + 8vw, 13rem);
+  /* the report's micro-rule frame sits this far in from the plate's edge */
+  --frame-inset: 0.5rem;
+
+  /* ---------- radius: a printed certificate has square corners; devices and pills do not ---------- */
+  --r-card: 2px;
+  --r-plate: 2px;
+  --r-seal: 999px;
+  --r-device: 46px;
+  --r-pill: 999px;
+
+  /* ---------- motion: a loupe settling over a stone; glass, precise, no bounce ---------- */
+  --ease-turn: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-seal: cubic-bezier(0.7, 0, 0.2, 1);
+  --dur-reveal: 0.7s;
+  --dur-fast: 0.14s;
+
+  /* ---------- permanent surfaces (never theme-inverted) ---------- */
+  /* the closing band: the report under the jeweller's lamp, jet black */
+  --close-bg: var(--jet-950);
+  --close-ink: #fafaf8;
+  --close-ink-2: #a8a8a3;
+  --close-card: var(--stock-50);
+  --close-card-ink: var(--jet-900);
+  --close-rule: rgb(17 17 17 / 0.16);
+  --close-primary: var(--gold-300);
+  --close-cta: var(--gold-500);
+  --close-on-cta: var(--jet-950);
+  --close-verified: var(--ice-300);
+  --close-card-verified: var(--ice-500);
+  --close-glow: rgb(230 179 22 / 0.14);
+
+  /* the device mocks */
+  --device-body: #1a1a1c;
+  --device-edge: #3f3f44;
+  --device-base: #cfcfc8;
+  --device-base-2: #b3b3ab;
+
+  /* ---------- semantic: light (default) ---------- */
+  --ground: var(--stock-50);
+  --ground-2: var(--stock-100);
+  --card: var(--stock-0);
+  --card-hi: #ffffff;
+  --ink: var(--jet-900);
+  --ink-2: #3f3f3c;
+  --ink-3: #5e5e5a;
+  --rule: rgb(17 17 17 / 0.1);
+  --rule-strong: rgb(17 17 17 / 0.28);
+  --rule-row: rgb(17 17 17 / 0.18);
+  --hairline-bg: var(--jet-900);
+  --frame: var(--gold-500);
+  --primary: var(--jet-900);
+  --primary-ink: var(--jet-900);
+  --on-primary: #fafaf8;
+  --primary-soft: rgb(17 17 17 / 0.07);
+  --money: var(--gold-700);
+  --money-soft: rgb(230 179 22 / 0.16);
+  --foil-a: #f2cf55;
+  --foil-b: #c99a0c;
+  --foil-c: #8a6a00;
+  --cta: var(--gold-500);
+  --cta-hover: var(--gold-600);
+  --on-cta: var(--jet-950);
+  --verified: var(--ice-500);
+  --verified-soft: rgb(35 50 213 / 0.1);
+  --seal: var(--gold-500);
+  --on-seal: var(--jet-950);
+  --danger: var(--ruby-500);
+  --focus: var(--ice-500);
+  --selection: rgb(230 179 22 / 0.3);
+  --duo-dark: var(--jet-900);
+  --duo-light: var(--gold-100);
+  --ink-band: var(--jet-900);
+  --on-band: #fafaf8;
+  --on-band-2: #b5b5b0;
+  --band-rule: rgb(250 250 248 / 0.16);
+
+  /* ---------- component ---------- */
+  /* the one card family: a plate of the report. Report stock, a gold micro-rule inset from the edge, a soft jet shadow. */
+  --card-border: inset 0 0 0 1px var(--rule-strong);
+  --card-shadow: 0 10px 24px -14px rgb(17 17 17 / 0.3), 0 1px 0 rgb(17 17 17 / 0.06);
+  --card-shadow-lift: 0 22px 40px -18px rgb(17 17 17 / 0.4), 0 2px 0 rgb(17 17 17 / 0.06);
+  --toast-bg: var(--jet-900);
+  --toast-ink: var(--stock-50);
+  --grade-strong: var(--gold-500);
+  --grade-good: var(--jet-900);
+  --grade-work: var(--ruby-500);
+  --grade-off: rgb(17 17 17 / 0.12);
+}
+
+:root[data-theme='dark'] {
+  /* the report read under the jeweller's lamp: jet ground, stock ink, the gold brighter */
+  --ground: var(--jet-950);
+  --ground-2: var(--jet-900);
+  --card: var(--jet-900);
+  --card-hi: var(--jet-850);
+  --ink: var(--stock-50);
+  --ink-2: #d6d6d0;
+  --ink-3: #b5b5b0;
+  --rule: rgb(250 250 248 / 0.14);
+  --rule-strong: rgb(250 250 248 / 0.32);
+  --rule-row: rgb(250 250 248 / 0.2);
+  --hairline-bg: rgb(250 250 248 / 0.22);
+  --frame: var(--gold-500);
+  --primary: var(--gold-500);
+  --primary-ink: var(--gold-300);
+  --on-primary: var(--jet-950);
+  --primary-soft: rgb(230 179 22 / 0.14);
+  --money: var(--gold-300);
+  --money-soft: rgb(242 207 85 / 0.14);
+  --foil-a: #fbf1cc;
+  --foil-b: #f2cf55;
+  --foil-c: #e6b316;
+  --cta: var(--gold-500);
+  --cta-hover: var(--gold-300);
+  --on-cta: var(--jet-950);
+  --verified: var(--ice-300);
+  --verified-soft: rgb(174 182 255 / 0.14);
+  --seal: var(--gold-500);
+  --on-seal: var(--jet-950);
+  --danger: var(--ruby-300);
+  --focus: var(--gold-300);
+  --selection: rgb(230 179 22 / 0.32);
+  --duo-dark: var(--jet-950);
+  --duo-light: var(--gold-300);
+  --ink-band: var(--jet-900);
+  --on-band: #fafaf8;
+  --on-band-2: #b5b5b0;
+  --band-rule: rgb(250 250 248 / 0.16);
+  --card-shadow: 0 10px 24px -14px rgb(0 0 0 / 0.7), 0 1px 0 rgb(0 0 0 / 0.3);
+  --card-shadow-lift: 0 22px 40px -18px rgb(0 0 0 / 0.8), 0 2px 0 rgb(0 0 0 / 0.3);
+  --toast-bg: var(--stock-50);
+  --toast-ink: var(--jet-900);
+  --grade-strong: var(--gold-500);
+  --grade-good: var(--stock-50);
+  --grade-work: var(--ruby-300);
+  --grade-off: rgb(250 250 248 / 0.16);
+}
